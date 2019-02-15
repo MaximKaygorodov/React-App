@@ -6,7 +6,7 @@ var app = express();
 var jsonParser = bodyParser.json();
 app.set("view engine", "hbs");
  
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/client/public"));
 app.use("/editArticle/:contentID", function (request, response) {
     var id = request.params["contentID"];//id статьи
     response.render("createNewArticle.hbs", {
