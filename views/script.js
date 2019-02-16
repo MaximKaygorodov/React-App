@@ -1,5 +1,3 @@
-const serverUrl = "http://localhost:3000/"
-
 $(document).ready(function(){
     // Initialize Tooltip
     $('[data-toggle="tooltip"]').tooltip(); 
@@ -17,21 +15,22 @@ function closeNav() {
 // Получение одной статьи
 function GetContent(id) {
   $.ajax({
-      url: serverUrl + "api/contents/"+id,
+      url: "/api/contents/"+id,
       type: "GET",
       contentType: "application/json",
       success: function (content) {
           var form = document.forms["contentForm"];
           form.elements["id"].value = content.id;
           form.elements["title"].value = content.title;
-          form.elements["context"].value = content.context;
+          //form.elements["context"].value = content.context;
+          quill.setContents([{ insert: content.context }]);
       }
   });
 }
 // Добавление статьи
     function CreateContent(titleText, contextText, timeText) {
         $.ajax({
-            url: serverUrl + "api/contents",
+            url: "api/contents",
             contentType: "application/json",
             method: "POST",
             data: JSON.stringify({
@@ -47,7 +46,7 @@ function GetContent(id) {
 // публикация только что написанной статьи
 function PublishContent2(titleText, contextText, timeText) {
   $.ajax({
-  url: serverUrl + "aplic/contents",
+  url: "aplic/contents",
   contentType: "application/json",
   method: "POST",
   data: JSON.stringify({

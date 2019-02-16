@@ -3,7 +3,7 @@ import Article from './Article'
 
 function ArticleList({ articles }) {
         <ul>
-            <li><Article article={articles}/></li>
+            <li><Article article={articles[0]}/></li>
         </ul>
     }
 

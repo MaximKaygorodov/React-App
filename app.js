@@ -1,12 +1,14 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var fs = require("fs");
+
  
 var app = express();
 var jsonParser = bodyParser.json();
 app.set("view engine", "hbs");
  
-app.use(express.static(__dirname + "/client/public"));
+app.use(express.static(__dirname + "/static/"));
+
 app.use("/editArticle/:contentID", function (request, response) {
     var id = request.params["contentID"];//id статьи
     response.render("createNewArticle.hbs", {
@@ -240,7 +242,7 @@ app.put("/aplic/contents", jsonParser, function(req, res){
 
 
 
-  
-app.listen(3001, function(){
-    console.log("Сервер ожидает подключения...");
+var port = 3001;
+app.listen(port, function(){
+    console.log("Сервер ожидает подключения... " + port);
 });
