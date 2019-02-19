@@ -14,7 +14,7 @@
 #side-menu {
     overflow-x: hidden;
     z-index: 2;
-    height: 100% !important;
+    height: 100vh !important;
     position: fixed ;
     background-color: rgb(231, 231, 231);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.288);
@@ -61,7 +61,7 @@ li {
 
 #close-button {
     z-index: 99;
-    top: 60px; left: 230px;
+    top: 60px; right: 10px;
     position: absolute;
     width: 20px;
     height: 20px;

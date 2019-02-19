@@ -1,11 +1,3 @@
-const serverUrl = "http://localhost:3000/"
-
-$(document).ready(function(){
-    // Initialize Tooltip
-    $('[data-toggle="tooltip"]').tooltip(); 
-  })
-
-  /* Set the width of the side navigation to 250px */
 function openNav() {
   document.getElementById("side-menu").className = ("col-md-2");
 }
@@ -14,6 +6,14 @@ function openNav() {
 function closeNav() {
   document.getElementById("side-menu").className = ("col-md-2 hidden-xs");
 }
+const serverUrl = "http://localhost:3000/"
+
+$(document).ready(function(){
+    // Initialize Tooltip
+    $('[data-toggle="tooltip"]').tooltip(); 
+  })
+
+  /* Set the width of the side navigation to 250px */
 // Получение одной статьи
 function GetContent(id) {
   $.ajax({
