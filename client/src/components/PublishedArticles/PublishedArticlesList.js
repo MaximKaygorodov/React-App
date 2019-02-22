@@ -1,14 +1,18 @@
 import React, {Component} from 'react'
 import PublishedArticle from './PublishedArticle'
-import pArticles from '../../pArticles'
+import contents_ready from '../../contents_ready'
 
 
-class PublishedArticlesList extends Component {
-    render() {
+function PublishedArticlesList () {
+    const articleElement = contents_ready.map(article => 
+        <p><PublishedArticle article = {article}/></p>)
         return (
-            <PublishedArticle article={pArticles[ 1 ]}/>
+            <div>
+                {articleElement}
+            </div>
+
         )
     }
-}
+
 
 export default PublishedArticlesList

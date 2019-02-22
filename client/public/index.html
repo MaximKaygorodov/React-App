@@ -5,8 +5,10 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="style.css">
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 	<title>MasterPoint</title>
 </head>
 <body>
@@ -17,8 +19,56 @@
 
 	<div id="content-field"></div>
 
+	<script>
+	 // отправка формы
+	 $("#save").click(function (e) {
+	e.preventDefault();
+		consloe.log('hello');
+		var form = document.forms["contentForm"];
+		var id = form.elements["id"].value;
+		var title = form.elements["title"].value;
+				var context = $('#editor').html();
+				var dat = new Date();
+			time=dat.getDate();
+			month = dat.getMonth()+1;
+			time=time+"."+month;            
+			time=time+"."+dat.getFullYear();
+			  time=time+"  "+dat.getHours();	  
+			  time=time+":"+dat.getMinutes();
+			time=time+":"+dat.getSeconds();
+		CreateContent(title, context, time);
+		quill.setContents([{ insert: '\n' }]);
+	});
+	// сохранение значений только что написанной статьи
+	$("#publish").click(function (e) {
+	e.preventDefault();
+			  var form = document.forms["contentForm"];
+		var id = form.elements["id"].value;
+		var title = form.elements["title"].value;
+				var context = $('#editor').html();
+				var dat = new Date();
+			time=dat.getDate();
+			month = dat.getMonth()+1;
+			time=time+"."+month;            
+			time=time+"."+dat.getFullYear();
+			  time=time+"  "+dat.getHours();	  
+			  time=time+":"+dat.getMinutes();
+			time=time+":"+dat.getSeconds();
+						console.log(title, context, time);
+			PublishContent2(title, context, time);
+			quill.setContents([{ insert: '\n' }]);
+			reset();
+				})
+				
+	</script>
+	
+	
+	<script src='formSave.js'></script>
+	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	<script src="script.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 </body>
 </html>
