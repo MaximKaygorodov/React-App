@@ -5,7 +5,7 @@ import contents_ready from '../../contents_ready'
 
 function PublishedArticlesList () {
     const articleElement = contents_ready.map(article => 
-        <p><PublishedArticle article = {article}/></p>)
+        <p key={article.id}><PublishedArticle article = {article}/></p>)
         return (
             <div>
                 {articleElement}

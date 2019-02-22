@@ -4,7 +4,7 @@ import contents from '../../contents'
 
 function UnpublishedArticlesList () {
     const articleElement = contents.map(article => 
-        <p><UnpublishedArticle article = {article}/></p>)
+        <p key={article.id}><UnpublishedArticle article = {article}/></p>)
         return (
             <div>
                 {articleElement}
