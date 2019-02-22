@@ -10,10 +10,10 @@ function UnpublisedArticle(props) {
         {body}
         </div>
     <div class="btn-group-vertical article-side-buttons">
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon glyphicon-trash"></span></button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target={"#myModal" + props.article.id}><span class="glyphicon glyphicon glyphicon-trash"></span></button>
             <button type="button" class="btn btn-default"><span class="glyphicon glyphicon glyphicon-pencil"></span></button>
             <button type="button" class="btn btn-default"><span class="glyphicon 	glyphicon glyphicon-menu-hamburger"></span></button>
-            <Modal id={props.article.id}/>
+            
         </div>
     </div>
     )}

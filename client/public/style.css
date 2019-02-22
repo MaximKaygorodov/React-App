@@ -62,7 +62,7 @@ li {
 #close-button {
     z-index: 99;
     top: 60px; right: 10px;
-    position: absolute;
+    position: fixed;
     width: 20px;
     height: 20px;
     background-color: #44434979;
