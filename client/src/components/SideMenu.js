@@ -21,7 +21,7 @@ import SideMenuBody from './SideMenuComponents/SideMenuBody'
     }
     openNav = () => {
         console.log('---', 'clicked');
-        this.setState ({ class: 'col-xs-10 col-md-2 col-sm-8', spanClass: ''});
+        this.setState ({ class: 'col-xs-8 col-md-2 col-sm-4', spanClass: ''});
     }
     closeNav = () => {
         this.setState ({  class: "hidden-xs hidden-sm col-md-2", spanClass: 'hidden' })
