@@ -12,7 +12,7 @@ class SideMenuBody extends Component {
             <div class={this.props.class} id="side-menu"> 
                 <div class="row">
                     <div class="container-fluid text-center">
-                        <img src="https://www.r-users.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png" class="rounded-circle user-photo" alt="User-Photo"></img>
+                        <img src="https://www.r-users.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png" class="rounded-circle block-100 my-4 mx-auto d-block" alt="User-Photo"></img>
                         <Router  history={history}>
                             <div class="nav nav-pills flex-column" id="">
                             <Link class="nav-link dark-hover" to='/create'>Create New Article</Link>

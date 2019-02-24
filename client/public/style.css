@@ -15,10 +15,9 @@
 }
 
 /* Parametrs of Account photo in left side menu */
-.user-photo {
-    margin: 50px 0 30px 0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.322);
-    width: 85%;
+.block-100 {
+    width: 150px;
+    height: 150px;
 }
 li {
      color: black;
