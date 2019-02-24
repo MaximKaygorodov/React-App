@@ -4,7 +4,7 @@ import Modal from './Modal'
 function UnpublisedArticle(props) {
     const body = <p>{props.article.context}</p>
     return (
-    <div class="row">
+    <div class="row container">
         <div class="well col-md-7 col-xs-10 uArticle">
         <h3>{props.article.title}</h3><br/>
         {body}

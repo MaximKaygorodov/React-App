@@ -1,6 +1,41 @@
 import React from 'react'
 
+function reset() {
+    var form = document.forms.contentForm;
+    form.reset();
+    form.elements.id.value = 0;
+}
+
+function createContent() {
+var form = document.forms.contentForm; 
+var titleText = form.elements.title; 
+var contextText = form.elements.context;
+
+var dat = new Date();
+    var timeText = dat.getDate();
+    var month = dat.getMonth() + 1;
+    timeText=timeText+"."+month;            
+    timeText=timeText+"."+dat.getFullYear();
+    timeText=timeText+"  "+dat.getHours();	  
+    timeText=timeText+":"+dat.getMinutes();
+    timeText=timeText+":"+dat.getSeconds();
+
+var dataForServer = {
+    'title': titleText.value,
+    'context': contextText.value,
+    'time': timeText
+    }
+var myInit = { 
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body:  JSON.stringify( dataForServer )
+            };
+fetch('api/contents/', myInit).then(function(){
+    reset();
+    });
+}
 function Editor() {
+
     return (
 <div>
             <br/><br/><br/>
@@ -19,7 +54,7 @@ function Editor() {
                     </div>
                     <div class="row text-right">
                             <button type="button" class="btn btn-default" id="publish">Publish Article</button>
-                            <button type="button" class="btn btn-default" id="save">Save Article as Unpublished</button>
+                            <button type="button" onClick={createContent} class="btn btn-default" id="save">Save Article as Unpublished</button>
                     </div> 
                     </form>    
                                

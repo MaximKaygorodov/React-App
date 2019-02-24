@@ -12,8 +12,8 @@ class ContentField extends Component {
 
         return (
             <div>
-            <div class="col-sm-3 full-height"></div>
-        <div class="col-sm-9 col-xs-12 content-field" >
+            <div class="col-md-3"></div>
+        <div class="col-sm-12 col-md-9 container-fluid content-field" >
             <Router history={history}>
                 <div>
                     <Route exact path='/' component={PublishedArticlesList}/>       
