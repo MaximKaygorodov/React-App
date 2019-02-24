@@ -3,13 +3,6 @@
     border-bottom-width: 0 !important;
 }
 
-.navbar li a, .navbar .navbar-brand { 
-    color: #bf99e2 !important;
-  }
-
-.col-xs-0 {
-    width: 0px !important; 
-}
 
 #side-menu {
     overflow-x: hidden;
@@ -23,7 +16,7 @@
 
 /* Parametrs of Account photo in left side menu */
 .user-photo {
-    margin: 60px 0 30px 0;
+    margin: 50px 0 30px 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.322);
     width: 85%;
 }
@@ -45,9 +38,16 @@ li {
     background-color: rgb(236, 236, 236);
 }
 
-.article-side-buttons {
-    margin-left: 5px;
-    margin-top: 20px;
+
+
+.dark-hover{
+    color: #353b48;
+    transition: 0.1s;
+}
+
+.dark-hover:hover {
+    background-color: #353b48;
+    color: rgb(255, 255, 255);
 }
 
 #open-button {
@@ -89,3 +89,24 @@ a, a:hover{
 .margin-top {
     margin-top: 20px;
 }
+
+@media (max-device-width:  992px) {
+    .w-0 {
+        display: none;
+    }
+
+}
+@media (min-device-width:  992px) {
+    .w-1 {
+        display: none;
+    }
+
+}
+
+
+
+.navbar, .navbar-brand , .navbar-brand:hover, .grey  {
+    background-color: #353b48 !important;
+    color: white;
+}
+

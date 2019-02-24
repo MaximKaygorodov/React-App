@@ -12,13 +12,13 @@ class SideMenuBody extends Component {
             <div class={this.props.class} id="side-menu"> 
                 <div class="row">
                     <div class="container-fluid text-center">
-                        <img src="https://www.r-users.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png" class="img-circle user-photo" alt="User-Photo"></img>
+                        <img src="https://www.r-users.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png" class="rounded-circle user-photo" alt="User-Photo"></img>
                         <Router  history={history}>
-                            <ul class="nav nav-pills nav-stacked">
-                            <li class=''><Link to='/create'>Create New Article</Link></li>
-                            <li class=''><Link to='/'>Published Articles</Link></li>
-                            <li class=''><Link to='/unpublished'>Unpublished Articles</Link></li>
-                            </ul>
+                            <div class="nav nav-pills flex-column" id="">
+                            <Link class="nav-link dark-hover" to='/create'>Create New Article</Link>
+                            <Link class='nav-link dark-hover' to='/'>Published Articles</Link>
+                            <Link class='nav-link dark-hover' to='/unpublished'>Unpublished Articles</Link>
+                            </div>
                         </Router >
                     </div>
                 </div>

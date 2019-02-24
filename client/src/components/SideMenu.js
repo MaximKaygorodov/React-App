@@ -5,7 +5,7 @@ import SideMenuBody from './SideMenuComponents/SideMenuBody'
         constructor(props) {
          super(props);
 
-         this.state = { class: "hidden-xs hidden-sm col-md-2", spanClass: 'hidden' };
+         this.state = { class: "col-sm-4 col-lg-2 col-10", spanClass: 'w-1' };
         }
             
 
@@ -21,10 +21,12 @@ import SideMenuBody from './SideMenuComponents/SideMenuBody'
     }
     openNav = () => {
         console.log('---', 'clicked');
-        this.setState ({ class: 'col-xs-8 col-md-2 col-sm-4', spanClass: ''});
+        this.setState ({ class: 'col-10 col-sm-4 col-lg-2', spanClass: 'w-1'});
     }
     closeNav = () => {
-        this.setState ({  class: "hidden-xs hidden-sm col-md-2", spanClass: 'hidden' })
+        console.log('---', 'clicked');
+
+        this.setState ({  class: "col-sm-4 col-md-2 w-0", spanClass: 'w-0' })
     }
 }
 

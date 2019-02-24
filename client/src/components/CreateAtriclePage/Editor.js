@@ -37,11 +37,8 @@ fetch('api/contents/', myInit).then(function(){
 function Editor() {
 
     return (
-<div>
-            <br/><br/><br/>
-
     <div class="row">
-        <div class="col-md-10" >
+        <div class="col-12" >
                 <form action="/action_page.php" name="contentForm">
                     <div class="form-group">
                             <label for="text-area">What's new? </label>
@@ -52,15 +49,14 @@ function Editor() {
                             
 
                     </div>
-                    <div class="row text-right">
-                            <button type="button" class="btn btn-default" id="publish">Publish Article</button>
-                            <button type="button" onClick={createContent} class="btn btn-default" id="save">Save Article as Unpublished</button>
+                    <div class="row justify-content-end mr-1">
+                            <button type="button" class="btn btn-light" id="publish">Publish Article</button>
+                            <button type="button" onClick={createContent} class="btn btn-light" id="save">Save Article as Unpublished</button>
                     </div> 
                     </form>    
                                
         </div>
     </div>
-</div>
     )
 }
 

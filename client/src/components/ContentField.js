@@ -11,18 +11,16 @@ class ContentField extends Component {
     render(){
 
         return (
-            <div>
-            <div class="col-md-3"></div>
-        <div class="col-sm-12 col-md-9 container-fluid content-field" >
-            <Router history={history}>
-                <div>
-                    <Route exact path='/' component={PublishedArticlesList}/>       
-                    <Route path='/create' component={Editor}/>
-                    <Route path='/unpublished' component={UnpublishedArticlesList}/>
-                </div>  
-            </Router>         
+            <div class="row m-0 p-0 mt-5 mr-md-5 content-field">
+                <div class=" col-md-3 w-0"></div>
+                <Router history={history}>
+                    <div class="col-md-9 col-12">
+                        <Route exact path='/' component={PublishedArticlesList}/>       
+                        <Route path='/create' component={Editor}/>
+                        <Route path='/unpublished' component={UnpublishedArticlesList}/>
+                    </div>  
+                </Router>         
             </div>
-        </div>
     )
 }
 }

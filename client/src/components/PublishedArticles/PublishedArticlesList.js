@@ -5,12 +5,11 @@ import contents_ready from '../../contents_ready'
 
 function PublishedArticlesList () {
     const articleElement = contents_ready.map(article => 
-        <p key={article.id}><PublishedArticle article = {article}/></p>)
+        <div class="card pArticle" key={article.id}><PublishedArticle article = {article}/></div>)
         return (
-            <div>
+            <div class="card-columns">
                 {articleElement}
             </div>
-
         )
     }
 

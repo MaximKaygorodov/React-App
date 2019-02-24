@@ -5,11 +5,10 @@ import Modal from './Modal'
 
 function UnpublishedArticlesList () {
     const articleElement = contents.map(article => 
-        <p key={article.id}><Modal article={article}/><UnpublishedArticle article = {article}/></p>)
+        <div class="container mb-3" key={article.id}><Modal article={article}/><UnpublishedArticle article = {article}/></div>)
         return (
             <div>
-                {articleElement}
-                
+                {articleElement} 
             </div>
         )
     }
