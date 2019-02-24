@@ -242,6 +242,31 @@ app.put("/aplic/contents", jsonParser, function(req, res){
 
 
 
+// получение отправленных данных в архив
+app.post("/api/archieve", jsonParser, function (req, res) {
+     
+    if(!req.body) return res.sendStatus(400);
+     
+    var titleText = req.body.title;
+    var contextText = req.body.context;
+    var timeText = req.body.time;
+    var content = {title: titleText, context: contextText, time: timeText};
+     
+    var data = fs.readFileSync("./client/src/archieve.json", "utf8");
+    var contents = JSON.parse(data);
+     
+    // находим максимальный id
+    var id = Math.max.apply(Math,contents.map(function(o){return o.id;}))
+    // увеличиваем его на единицу
+    content.id = id+1;
+    // добавляем статью в массив
+    contents.push(content);
+    var data = JSON.stringify(contents);
+    // перезаписываем файл с новыми данными
+    fs.writeFileSync("./client/src/archieve.json", data);
+    res.send(content);
+});
+
 var port = 3001;
 app.listen(port, function(){
     console.log("Сервер ожидает подключения... " + port);
