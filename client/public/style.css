@@ -109,3 +109,22 @@ a, a:hover{
     color: white;
 }
 
+.slide-bar {
+    width: 0px;
+    height: 20px;
+    color: rgba(0, 0, 0, 0);   
+    transition: 0.5s;     
+}
+
+.card:hover .slide-bar {
+    background-color: #0000003f;
+    width: 80px;
+    height: 20px;
+    color: rgba(0, 0, 0, 0.801); 
+    padding-bottom: 5px;
+}
+
+.slide-bar-item:hover {
+    color: rgba(255, 255, 255, 0.692);
+}
+
