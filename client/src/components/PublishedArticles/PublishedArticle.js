@@ -2,17 +2,8 @@ import React from 'react'
 import Modal from './Modal'
 
 function PublisedArticle(props) {
-    const body = <p>{props.article.context}</p>
-    function deleteContent() {
-        var id = props.article.id;
-        var myInit = { 
-            method: 'DELETE',
-            headers: {'Content-Type': 'application/json'}
-                    };
-        fetch('aplic/contents/'+id, myInit).then(function(content){
-        console.log(content);
-        });
-    }
+    const body = <p>{props.article.context.substring(0,500)}...</p>
+
     return (
         <div>
             <div class="rounded d-flex justify-content-around ml-auto mr-1 mt-1 slide-bar">

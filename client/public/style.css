@@ -110,6 +110,7 @@ a, a:hover{
 }
 
 .slide-bar {
+    overflow: hidden;
     width: 0px;
     height: 20px;
     color: rgba(0, 0, 0, 0);   
@@ -122,7 +123,9 @@ a, a:hover{
     height: 20px;
     color: rgba(0, 0, 0, 0.801); 
     padding-bottom: 5px;
+
 }
+
 
 .slide-bar-item:hover {
     color: rgba(255, 255, 255, 0.692);

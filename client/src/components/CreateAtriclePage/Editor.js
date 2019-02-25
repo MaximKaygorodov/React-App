@@ -1,72 +1,72 @@
 import React from 'react'
 
-function Editor() {
-    function reset() {
-        var form = document.forms.contentForm;
-        form.reset();
-        form.elements.id.value = 0;
-    }
-    
-    function createContent() {
-    var form = document.forms.contentForm; 
-    var titleText = form.elements.title; 
-    var contextText = form.elements.context;
-    
+function reset() {
+    var form = document.forms["contentForm"];
+    form.reset();
+    form.elements["id"].value = 0;
+}
+
+
+function getDate() {
     var dat = new Date();
-        var timeText = dat.getDate();
-        var month = dat.getMonth() + 1;
-        timeText=timeText+"."+month;            
+    var timeText=dat.getDate();
+    var month = dat.getMonth()+1;
+    timeText=timeText+"."+month;            
         timeText=timeText+"."+dat.getFullYear();
         timeText=timeText+"  "+dat.getHours();	  
         timeText=timeText+":"+dat.getMinutes();
         timeText=timeText+":"+dat.getSeconds();
-    
-    var dataForServer = {
+    return timeText;
+}
+
+
+
+
+function saveUnpublished() {
+    var form = document.forms.contentForm; 
+    var titleText = form.elements.title; 
+    var contextText = form.elements.context;
+    var saveArticleToServer = {
         'title': titleText.value,
         'context': contextText.value,
-        'time': timeText
+        'time': getDate()
+        }
+    console.log('clicked')
+    getDate();
+    var myInit = { 
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body:  JSON.stringify( saveArticleToServer )
+                };
+fetch('api/contents/', myInit).then(function(content){
+    console.log(content);
+    reset();
+    });
+}
+function savePublished() {
+    var form = document.forms.contentForm; 
+    var titleText = form.elements.title; 
+    var contextText = form.elements.context;
+    var saveArticleToServer = {
+        'title': titleText.value,
+        'context': contextText.value,
+        'time': getDate()
         }
     var myInit = { 
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body:  JSON.stringify( dataForServer )
+        body:  JSON.stringify( saveArticleToServer )
                 };
-    fetch('api/contents/', myInit).then(function(){
-        reset();
-        });
-    }
+fetch('aplic/contents/', myInit).then(function(content){
+    console.log(content);
+    reset();
+    });
+}
 
-    function publishContent2() {
-        var form = document.forms.contentForm; 
-        var titleText = form.elements.title; 
-        var contextText = form.elements.context;
 
-        var dat = new Date();
-            var timeText=dat.getDate();
-            var month = dat.getMonth()+1;
-            timeText=timeText+"."+month;            
-            timeText=timeText+"."+dat.getFullYear();
-            timeText=timeText+"  "+dat.getHours();	  
-            timeText=timeText+":"+dat.getMinutes();
-            timeText=timeText+":"+dat.getSeconds();
-        var dataForServer = {
-            'title': titleText.value,
-            'context': contextText.value,
-            'time': timeText
-            }
-        var myInit = { 
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body:  JSON.stringify( dataForServer )
-                    };
-        fetch('aplic/contents/', myInit).then(function(content){
-            console.log(content);
-            reset();
-            });
-    }
-
+function Editor() {
     return (
-    <div class="row">
+        <div class="row">
         <div class="col-12" >
                 <form action="/action_page.php" name="contentForm">
                     <div class="form-group">
@@ -79,8 +79,8 @@ function Editor() {
 
                     </div>
                     <div class="row justify-content-end mr-1">
-                            <button type="button" onClick={publishContent2} class="btn btn-light" id="publish">Publish Article</button>
-                            <button type="button" onClick={createContent} class="btn btn-light" id="save">Save Article as Unpublished</button>
+                            <button type="button" onClick={savePublished} class="btn btn-light" id="publish">Publish Article</button>
+                            <button type="button" onClick={saveUnpublished} class="btn btn-light" id="save">Save Article as Unpublished</button>
                     </div> 
                     </form>    
                                
