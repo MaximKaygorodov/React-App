@@ -17,7 +17,6 @@ function getDate() {
 
 function publishUnpublished () {
         getDate();
-        var articleId = props.article.id
         var articleTitle = props.article.title; 
         var articleContext = props.article.context;
         var articleForServer = {
@@ -25,26 +24,29 @@ function publishUnpublished () {
             'context': articleContext,
             'time': getDate
             }
+        var postMethod = { 
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body:  JSON.stringify( articleForServer )
+                        };
     fetch('aplic/contents/', postMethod).then(function(content){
         console.log(content);
         deleteUnpublished();
-        });
+        });}
+
 function deleteUnpublished() {
+    var articleId = props.article.id
+    var deleteMethod = { 
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json'}
+                };    
     fetch('api/contents/'+ articleId, deleteMethod).then(function(content){
     console.log(content);
     });
 }
-var deleteMethod = { 
-    method: 'DELETE',
-    headers: {'Content-Type': 'application/json'}
-            };
 
-var postMethod = { 
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body:  JSON.stringify( articleForServer )
-            };
-}
+
+
     return (
         <div class="row">
             <div class="card col-10">
