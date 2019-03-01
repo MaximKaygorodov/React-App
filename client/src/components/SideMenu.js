@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import SideMenuBody from './SideMenuComponents/SideMenuBody'
 
- class SideMenu extends Component{
+class SideMenu extends Component{
         constructor(props) {
          super(props);
 

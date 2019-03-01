@@ -1,8 +1,9 @@
 import React from 'react'
 
-function PublishedArticlePage() {
+function PublishedArticlePage(props) {
+    var body = "Oh hi Mark!";
     return (
-        <h1>Oh hi Mark!</h1>
+        <h1>{body}</h1>
     )
 }
 
