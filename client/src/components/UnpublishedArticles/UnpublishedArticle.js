@@ -49,13 +49,18 @@ function deleteUnpublished() {
 
     return (
         <div class="row">
-            <div class="card col-10">
-                <div class="card-body">
-                    <h3>{props.article.title}</h3><br/>
-                    {body}
+            <div class="col-10">
+                <div class="card ">
+                    <div class="card-body">
+                        <h3>{props.article.title}</h3><br/>
+                        {body}
+                    </div>
+                    <div class="card-footer text-right">
+                        <p class="small">Saved {props.article.time}</p>
+                    </div>
                 </div>
             </div>
-            <div class="btn-group-vertical ml-1 h-25">
+            <div class="btn-group-vertical ml-1 h-50">
                 <button type="button" class="btn-danger btn" data-toggle="modal" data-target={"#myModal" + props.article.id}><i class="fas fa-trash-alt"></i></button>
                 <button type="button" class="btn-light btn"><i class="fas fa-pencil-alt"></i></button>
                 <button type="button" class="btn-light btn" onClick={publishUnpublished}><i class="fas fa-bullhorn"></i></button>      

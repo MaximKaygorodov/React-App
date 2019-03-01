@@ -1,16 +1,16 @@
 import React, {Component} from 'react'
 
 function Modal(props) {
-    function deleteContent(id) {
-        console.log(id);
-        var myInit = { method: 'DELETE', 
-        headers: { 
-            'Content-Type': 'application/json'} 
-    }; 
-          fetch('api/contents/' + id, myInit).then(function(content){ 
-          console.log(content); 
-          }); 
-    }
+  function deleteUnpublished() {
+    var articleId = props.article.id
+    var deleteMethod = { 
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json'}
+                };    
+    fetch('api/contents/'+ articleId, deleteMethod).then(function(content){
+    console.log(content);
+    });
+}
     return (
         <div id={"myModal" + props.article.id} class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -22,7 +22,7 @@ function Modal(props) {
         </button>
       </div>
       <div class="modal-body btn-group w-25 justify-content-end">
-        <button type="button" onClick={(id) => deleteContent(props.article.id)} class="btn btn-danger" >Yes</button>
+        <button type="button" onClick={deleteUnpublished} class="btn btn-danger" >Yes</button>
         <button type="button" class="btn btn-light" data-dismiss="modal">No</button>
       </div>
     </div>
