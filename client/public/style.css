@@ -4,6 +4,7 @@
 }
 
 body {
+    font-family: 'PT Sans', sans-serif !important;
     background-color: #f5f5f5 !important;
 }
 
@@ -118,6 +119,7 @@ a, a:hover{
 }
 
 .slide-bar {
+    
     overflow: hidden;
     width: 0px;
     height: 20px;

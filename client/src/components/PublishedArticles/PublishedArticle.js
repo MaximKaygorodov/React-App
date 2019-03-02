@@ -20,7 +20,6 @@ function PublisedArticle(props) {
     }
 
     function unpublishPublished () {
-        getDate();
         var articleTitle = props.article.title; 
         var articleContext = props.article.context;
         var articleForServer = {
