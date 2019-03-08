@@ -7,16 +7,15 @@ function reset() {
 }
 
 
-function getDate() {
+function getArticleDate() {
     var dat = new Date();
     var timeText=dat.getDate();
-    var month = dat.getMonth()+1;
-    timeText=timeText+"."+month;            
+    var month = dat.getMonth() + 1;
+        timeText=timeText+"."+month;            
         timeText=timeText+"."+dat.getFullYear();
         timeText=timeText+"  "+dat.getHours();	  
         timeText=timeText+":"+dat.getMinutes();
-        timeText=timeText+":"+dat.getSeconds();
-    return timeText;
+    return (timeText);
 }
 
 
@@ -29,10 +28,9 @@ function saveUnpublished() {
     var saveArticleToServer = {
         'title': titleText.value,
         'context': contextText.value,
-        'time': getDate()
+        'time': getArticleDate()
         }
     console.log('clicked')
-    getDate();
     var myInit = { 
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -50,7 +48,7 @@ function savePublished() {
     var saveArticleToServer = {
         'title': titleText.value,
         'context': contextText.value,
-        'time': getDate()
+        'time': getArticleDate()
         }
     var myInit = { 
         method: 'POST',

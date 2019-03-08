@@ -7,7 +7,7 @@ import {history} from '../SideMenuComponents/SideMenuBody'
 
 function PublisedArticle(props) {
 
-    function getDate() {
+    function getArticleDate() {
         var dat = new Date();
         var timeText=dat.getDate();
         var month = dat.getMonth()+1;
@@ -25,7 +25,7 @@ function PublisedArticle(props) {
         var articleForServer = {
             'title': articleTitle,
             'context': articleContext,
-            'time': getDate()
+            'time': getArticleDate()
             }
         var postMethod = { 
             method: 'POST',
