@@ -1,4 +1,5 @@
 import React from 'react'
+import QuillTextArea from './QuillTextArea';
 
 function reset() {
     var form = document.forms["contentForm"];
@@ -17,9 +18,6 @@ function getArticleDate() {
         timeText=timeText+":"+dat.getMinutes();
     return (timeText);
 }
-
-
-
 
 function saveUnpublished() {
     var form = document.forms.contentForm; 
@@ -41,6 +39,7 @@ fetch('api/contents/', myInit).then(function(content){
     reset();
     });
 }
+
 function savePublished() {
     var form = document.forms.contentForm; 
     var titleText = form.elements.title; 
@@ -61,7 +60,6 @@ fetch('aplic/contents/', myInit).then(function(content){
     });
 }
 
-
 function Editor() {
     return (
         <div class="row">
@@ -70,11 +68,7 @@ function Editor() {
                     <div class="form-group">
                             <label for="text-area">What's new? </label>
                             <input type="hidden" name="id" value="0" />
-                        <textarea class="form-control"  name="title" placeholder="Title" rows="1"></textarea> <br/>
-                        
-                        <textarea class="form-control" name="context"  id="editor" placeholder="Start to write" rows="10"></textarea>
-                            
-
+                          <QuillTextArea/>  
                     </div>
                     <div class="row justify-content-end mr-1">
                             <button type="button" onClick={savePublished} class="btn btn-light" id="publish">Publish Article</button>
