@@ -1,5 +1,6 @@
 import React from 'react'
-import Modal from './Modal'
+import ModalDelete from './ModalDelete'
+import ModalView from './ModalView'
 import { Router , Link} from 'react-router-dom'
 import {history} from '../SideMenuComponents/SideMenuBody'
 
@@ -57,21 +58,20 @@ function deletePublished() {
         
         <div>
             <div class="rounded d-flex justify-content-around ml-auto mr-1 mt-1 slide-bar">
-                <i data-toggle="modal" data-target={"#myModal" + props.article.id} class="slide-bar-item small align-self-center far fa-trash-alt"></i>
+                <i data-toggle="modal" data-target={"#myModalDelete" + props.article.id} class="slide-bar-item small align-self-center far fa-trash-alt"></i>
                 <i class="slide-bar-item small align-self-center far fa-edit"></i>
                 <i onClick={unpublishPublished} class="slide-bar-item small align-self-center far fa-folder-open"></i>
             </div>
-            <div class="card-body">
-            <Link class="black-link" to={{pathname: '/publishedArticlePage' , articleData: {mes: 'oh hi'} }}>
+            <div data-toggle="modal" data-target={"#myModalView" + props.article.id} class="card-body">
                 <h3>{props.article.title}</h3>
                 <hr/>
                 {body}
-                </Link>
             </div>
             <div class="card-footer">
                 <p class="small text-muted">Published {props.article.time}</p>
             </div>
-            <Modal article={props.article}/>
+            <ModalDelete article={props.article}/>
+            <ModalView article={props.article}/>
         </div>
         </Router>
     )}
