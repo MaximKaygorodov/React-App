@@ -1,7 +1,10 @@
 import React from 'react'
+import Modal from './Modal'
+import ModalView from '../PublishedArticles/ModalView'
+
 
 function UnpublisedArticle(props) {
-    const body = <p>{props.article.context.substring(0,500)}</p>
+    const body = <p>{props.article.context.substring(0,500)}...</p>
 
 function getDate() {
         var dat = new Date();
@@ -49,17 +52,25 @@ function deleteUnpublished() {
 
     return (
         <div class="row">
-            <div class="card col-10">
-                <div class="card-body">
-                    <h3>{props.article.title}</h3><br/>
-                    {body}
+            <div class="col-10">
+                <div data-toggle="modal" data-target={"#myModalView" + props.article.id} class="card ">
+                    <div class="card-body">
+                        <h3>{props.article.title}</h3><hr/><br/>
+                        {body}
+                    </div>
+                    <div class="card-footer text-right">
+                        <p class="small">Saved {props.article.time}</p>
+                    </div>
                 </div>
+                
             </div>
-            <div class="btn-group-vertical ml-1 h-25">
+            <div class="btn-group-vertical ml-1 h-50">
                 <button type="button" class="btn-danger btn" data-toggle="modal" data-target={"#myModal" + props.article.id}><i class="fas fa-trash-alt"></i></button>
                 <button type="button" class="btn-light btn"><i class="fas fa-pencil-alt"></i></button>
                 <button type="button" class="btn-light btn" onClick={publishUnpublished}><i class="fas fa-bullhorn"></i></button>      
             </div>
+            <Modal article={props.article}/>
+            <ModalView article={props.article}/>
         </div>
     )}
 

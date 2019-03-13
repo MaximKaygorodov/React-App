@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
+import React from 'react'
 
-function Modal(props) {
+function ModalDelete(props) {
     function deleteContent() {
       var id = props.article.id;
       var myInit = { 
@@ -12,7 +12,7 @@ function Modal(props) {
       });
   }
     return (
-        <div id={"myModal" + props.article.id} class="modal fade" role="dialog">
+        <div id={"myModalDelete" + props.article.id} class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -31,4 +31,4 @@ function Modal(props) {
 </div>
     )}
 
-export default Modal
+export default ModalDelete

@@ -1,4 +1,5 @@
 import React from 'react'
+import QuillTextArea from './QuillTextArea';
 
 function reset() {
     var form = document.forms["contentForm"];
@@ -7,20 +8,16 @@ function reset() {
 }
 
 
-function getDate() {
+function getArticleDate() {
     var dat = new Date();
     var timeText=dat.getDate();
-    var month = dat.getMonth()+1;
-    timeText=timeText+"."+month;            
+    var month = dat.getMonth() + 1;
+        timeText=timeText+"."+month;            
         timeText=timeText+"."+dat.getFullYear();
         timeText=timeText+"  "+dat.getHours();	  
         timeText=timeText+":"+dat.getMinutes();
-        timeText=timeText+":"+dat.getSeconds();
-    return timeText;
+    return (timeText);
 }
-
-
-
 
 function saveUnpublished() {
     var form = document.forms.contentForm; 
@@ -29,10 +26,9 @@ function saveUnpublished() {
     var saveArticleToServer = {
         'title': titleText.value,
         'context': contextText.value,
-        'time': getDate()
+        'time': getArticleDate()
         }
     console.log('clicked')
-    getDate();
     var myInit = { 
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -43,6 +39,7 @@ fetch('api/contents/', myInit).then(function(content){
     reset();
     });
 }
+
 function savePublished() {
     var form = document.forms.contentForm; 
     var titleText = form.elements.title; 
@@ -50,7 +47,7 @@ function savePublished() {
     var saveArticleToServer = {
         'title': titleText.value,
         'context': contextText.value,
-        'time': getDate()
+        'time': getArticleDate()
         }
     var myInit = { 
         method: 'POST',
@@ -63,7 +60,6 @@ fetch('aplic/contents/', myInit).then(function(content){
     });
 }
 
-
 function Editor() {
     return (
         <div class="row">
@@ -72,11 +68,7 @@ function Editor() {
                     <div class="form-group">
                             <label for="text-area">What's new? </label>
                             <input type="hidden" name="id" value="0" />
-                        <textarea class="form-control"  name="title" placeholder="Title" rows="1"></textarea> <br/>
-                        
-                        <textarea class="form-control" name="context"  id="editor" placeholder="Start to write" rows="10"></textarea>
-                            
-
+                          <QuillTextArea/>  
                     </div>
                     <div class="row justify-content-end mr-1">
                             <button type="button" onClick={savePublished} class="btn btn-light" id="publish">Publish Article</button>

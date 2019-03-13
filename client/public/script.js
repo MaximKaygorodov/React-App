@@ -2,6 +2,7 @@ function openNav() {
   document.getElementById("side-menu").className = ("col-md-2");
 }
 
+
 /* Set the width of the side navigation to 0 */
 function closeNav() {
   document.getElementById("side-menu").className = ("col-md-2 hidden-xs");

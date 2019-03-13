@@ -4,7 +4,8 @@ import contents_ready from '../../contents_ready'
 
 
 function PublishedArticlesList () {
-    const articleElement = contents_ready.map(article => 
+    const artilces = contents_ready.reverse();
+    const articleElement = artilces.map(article => 
         <div class="card pArticle" key={article.id}><PublishedArticle article = {article}/></div>)
         return (
             <div class="card-columns">

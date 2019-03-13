@@ -3,13 +3,18 @@
     border-bottom-width: 0 !important;
 }
 
+body {
+    font-family: 'PT Sans', sans-serif !important;
+    background-color: #f5f5f5 !important;
+}
+
 
 #side-menu {
     overflow-x: hidden;
     z-index: 2;
     height: 100vh !important;
     position: fixed ;
-    background-color: rgb(231, 231, 231);
+    background-color: rgb(250, 249, 255);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.288);
     transition: 0.5s;
 }
@@ -22,6 +27,11 @@
 li {
      color: black;
  }
+.black-link, .black-link:hover {
+     color: black;
+     text-decoration: none;
+ }
+ 
 
 .content-field{
     top: 50px;
@@ -76,10 +86,6 @@ li {
     background-color: rgb(248, 248, 248);
 }
 
-#content-field {
-    background-color: rgb(253, 253, 253);
-}
-
 a, a:hover{
     color: black;
     text-decoration: none;
@@ -102,14 +108,18 @@ a, a:hover{
 
 }
 
+.corp-white-bg{
+    background-color: rgb(250, 249, 255) !important;
+}
 
 
 .navbar, .navbar-brand , .navbar-brand:hover, .grey  {
     background-color: #353b48 !important;
-    color: white;
+    color: rgb(250, 249, 255);
 }
 
 .slide-bar {
+    
     overflow: hidden;
     width: 0px;
     height: 20px;
@@ -123,7 +133,6 @@ a, a:hover{
     height: 20px;
     color: rgba(0, 0, 0, 0.801); 
     padding-bottom: 5px;
-
 }
 
 

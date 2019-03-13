@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import PublishedArticlesList from './PublishedArticles/PublishedArticlesList'
 import { Route, Router } from 'react-router-dom'
+import PublishedArticlePage from './PublishedArticles/PublishedArticlePage'
 import Editor from './CreateAtriclePage/Editor'
 import UnpublishedArticlesList from './UnpublishedArticles/UnpublishedArticlesList'
 import {history} from './SideMenuComponents/SideMenuBody'
@@ -15,6 +16,7 @@ class ContentField extends Component {
                 <div class=" col-md-3 w-0"></div>
                 <Router history={history}>
                     <div class="col-md-9 col-12">
+                        <Route path='/publishedArticlePage' component={PublishedArticlePage}/>
                         <Route exact path='/' component={PublishedArticlesList}/>       
                         <Route path='/create' component={Editor}/>
                         <Route path='/unpublished' component={UnpublishedArticlesList}/>
