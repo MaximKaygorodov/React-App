@@ -127,10 +127,15 @@ app.put("/api/contents", jsonParser, function(req, res){
     }
 });
 
+//обработчик для открытия статей для второго сайта
+app.get("/site/contents", function(req, res){
+      
+    var statya = fs.readFileSync("ССЫЛКА НА ФАЙЛ", "utf8");
+    var contents = JSON.parse(statya);
+    res.send(contents);
+});
 
-
-
-
+//обработчик открытия статей опубликованных на нашей платформе
 app.get("/aplic/contents", function(req, res){
       
     var statya = fs.readFileSync("./client/src/contents_ready.json", "utf8");
@@ -171,6 +176,9 @@ app.post("/aplic/contents/", jsonParser, function (req, res) {
      
     var data = fs.readFileSync("./client/src/contents_ready.json", "utf8");
     var contents = JSON.parse(data);
+
+    var dataForSyte = fs.readFileSync("ССЫЛКА НА ФАЙЛ", "utf8");
+    var contentsForSyte = JSON.parse(dataForSyte);
      
     // находим максимальный id
     var id = Math.max.apply(Math,contents.map(function(o){return o.id;}))
@@ -181,6 +189,17 @@ app.post("/aplic/contents/", jsonParser, function (req, res) {
     var data = JSON.stringify(contents);
     // перезаписываем файл с новыми данными
     fs.writeFileSync("./client/src/contents_ready.json", data);
+
+    // находим максимальный id
+    var idNew = Math.max.apply(Math,contentsForSyte.map(function(o){return o.id;}))
+    // увеличиваем его на единицу
+    content.id = idNew+1;
+    // добавляем статью в массив
+    contentsForSyte.push(content);
+    var dataForSyte = JSON.stringify(contents);
+    // перезаписываем файл с новыми данными
+    fs.writeFileSync("ССЫЛКА НА ФАЙЛ", dataForSyte);
+
     res.send(content);
 });
  // удаление статьи по id
@@ -189,6 +208,10 @@ app.delete("/aplic/contents/:id", function(req, res){
     var id = req.params.id;
     var data = fs.readFileSync("./client/src/contents_ready.json", "utf8");
     var contents = JSON.parse(data);
+
+    var dataForSyte = fs.readFileSync("ССЫЛКА НА ФАЙЛ", "utf8");
+    var contentsForSyte = JSON.parse(dataForSyte);
+
     var index = -1;
     // находим индекс статьи в массиве
     for(var i=0; i<contents.length; i++){
@@ -202,6 +225,9 @@ app.delete("/aplic/contents/:id", function(req, res){
         var content = contents.splice(index, 1)[0];
         var data = JSON.stringify(contents);
         fs.writeFileSync("./client/src/contents_ready.json", data);
+        var contentForSyte = contentsForSyte.splice(indexNew, 1)[0];
+        var dataForSyte = JSON.stringify(contentsForSyte);
+        fs.writeFileSync("ССЫЛКА НА ФАЙЛ", dataForSyte);
         // отправляем удаленную статью
         res.send(content);
     }
@@ -234,7 +260,7 @@ app.put("/aplic/contents", jsonParser, function(req, res){
         content.title = titleText;
         content.time = timeText;
         var data = JSON.stringify(contents);
-        fs.writeFileSync("c./client/src/contents_ready.json", data);
+        fs.writeFileSync("./client/src/contents_ready.json", data);
         res.send(content);
     }
     else{
