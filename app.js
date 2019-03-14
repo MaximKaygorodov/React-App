@@ -217,6 +217,7 @@ app.put("/aplic/contents", jsonParser, function(req, res){
     var contentId = req.body.id;
     var titleText = req.body.title;
     var contextText = req.body.context;
+    var timeText = req.body.time;
      
     var data = fs.readFileSync("./client/src/contents_ready.json", "utf8");
     var contents = JSON.parse(data);
@@ -231,6 +232,7 @@ app.put("/aplic/contents", jsonParser, function(req, res){
     if(content){
         content.context = contextText;
         content.title = titleText;
+        content.time = timeText;
         var data = JSON.stringify(contents);
         fs.writeFileSync("c./client/src/contents_ready.json", data);
         res.send(content);
