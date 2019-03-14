@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import PublishedArticle from './PublishedArticle'
 import contents_ready from '../../contents_ready'
 

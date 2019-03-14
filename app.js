@@ -130,7 +130,7 @@ app.put("/api/contents", jsonParser, function(req, res){
 //обработчик для открытия статей для второго сайта
 app.get("/site/contents", function(req, res){
       
-    var statya = fs.readFileSync("ССЫЛКА НА ФАЙЛ", "utf8");
+    var statya = fs.readFileSync("./user/src/articles.json", "utf8");
     var contents = JSON.parse(statya);
     res.send(contents);
 });
@@ -177,7 +177,7 @@ app.post("/aplic/contents/", jsonParser, function (req, res) {
     var data = fs.readFileSync("./client/src/contents_ready.json", "utf8");
     var contents = JSON.parse(data);
 
-    var dataForSyte = fs.readFileSync("ССЫЛКА НА ФАЙЛ", "utf8");
+    var dataForSyte = fs.readFileSync("./user/src/articles.json", "utf8");
     var contentsForSyte = JSON.parse(dataForSyte);
      
     // находим максимальный id
@@ -198,7 +198,7 @@ app.post("/aplic/contents/", jsonParser, function (req, res) {
     contentsForSyte.push(content);
     var dataForSyte = JSON.stringify(contents);
     // перезаписываем файл с новыми данными
-    fs.writeFileSync("ССЫЛКА НА ФАЙЛ", dataForSyte);
+    fs.writeFileSync("./user/src/articles.json", dataForSyte);
 
     res.send(content);
 });
@@ -209,7 +209,7 @@ app.delete("/aplic/contents/:id", function(req, res){
     var data = fs.readFileSync("./client/src/contents_ready.json", "utf8");
     var contents = JSON.parse(data);
 
-    var dataForSyte = fs.readFileSync("ССЫЛКА НА ФАЙЛ", "utf8");
+    var dataForSyte = fs.readFileSync("./user/src/articles.json", "utf8");
     var contentsForSyte = JSON.parse(dataForSyte);
 
     var index = -1;
@@ -227,7 +227,7 @@ app.delete("/aplic/contents/:id", function(req, res){
         fs.writeFileSync("./client/src/contents_ready.json", data);
         var contentForSyte = contentsForSyte.splice(indexNew, 1)[0];
         var dataForSyte = JSON.stringify(contentsForSyte);
-        fs.writeFileSync("ССЫЛКА НА ФАЙЛ", dataForSyte);
+        fs.writeFileSync("./user/src/articles.json", dataForSyte);
         // отправляем удаленную статью
         res.send(content);
     }

@@ -1,7 +1,7 @@
 import React from 'react'
 import ModalDelete from './ModalDelete'
 import ModalView from './ModalView'
-import { Router , Link} from 'react-router-dom'
+import { Router } from 'react-router-dom'
 import {history} from '../SideMenuComponents/SideMenuBody'
 
 
