@@ -5,6 +5,7 @@ import PublishedArticlePage from './PublishedArticles/PublishedArticlePage'
 import Editor from './CreateAtriclePage/Editor'
 import UnpublishedArticlesList from './UnpublishedArticles/UnpublishedArticlesList'
 import {history} from './SideMenuComponents/SideMenuBody'
+import RegistrationBody from './Registration/RegistrationBody'
 
 
 
@@ -20,8 +21,9 @@ class ContentField extends Component {
                         <Route exact path='/' component={PublishedArticlesList}/>       
                         <Route path='/create' component={Editor}/>
                         <Route path='/unpublished' component={UnpublishedArticlesList}/>
+                        <Route path='/registration' component={RegistrationBody}/>
                     </div>  
-                </Router>         
+                </Router>     				
             </div>
     )
 }
