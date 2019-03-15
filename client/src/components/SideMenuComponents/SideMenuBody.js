@@ -7,6 +7,19 @@ const history = createBorwserHistory();
 
 function SideMenuBody (props) {
 
+function logout(e){
+    e.preventDefault();
+        console.log("log_out");
+        var myInit = { method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'},
+            redirect: 'follow'
+        };
+        fetch('api/logout/', myInit).then(function(res){
+            window.location.href = '/registration';
+        });
+}
+
         return (
             <div class={props.class} id="side-menu"> 
                 <div class="row">
@@ -17,6 +30,7 @@ function SideMenuBody (props) {
                             <Link class="nav-link dark-hover" to='/create'>Create New Article</Link>
                             <Link class='nav-link dark-hover' to='/'>Published Articles</Link>
                             <Link class='nav-link dark-hover' to='/unpublished'>Unpublished Articles</Link>
+                            <Link class='nav-link dark-hover' to='#' id="logout" onClick={logout}>Exit</Link>
                             </div>
                         </Router >
                     </div>
