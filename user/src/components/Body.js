@@ -1,10 +1,10 @@
 import React from 'react'
-import Article from './Articles/Article'
+import ArticlesList from './Articles/ArticlesList'
 
 function Body() {
   return (
     <div class='py-3 bg-my container'>
-			<Article/>
+			<ArticlesList/>
     </div>
   )
 }
