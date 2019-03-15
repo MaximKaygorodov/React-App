@@ -1,5 +1,5 @@
 import React from 'react'
 import {render} from 'react-dom'
-import SayHi from './SayHi'
+import App from './App'
 
-render(<SayHi name = 'Max'/>, document.getElementById('root'))
+render(<App/>, document.getElementById('root'))
