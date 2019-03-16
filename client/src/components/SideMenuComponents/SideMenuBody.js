@@ -15,7 +15,7 @@ function logout(e){
             redirect: 'follow'
         };
         fetch('api/logout/', myInit).then(function(res){
-            window.location.href = '/registration';
+                window.location.href = '/registration ';
         });
 }
 

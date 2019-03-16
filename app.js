@@ -50,6 +50,7 @@ function requiresLogin(req, res, next) {
 app.post("/api/logout", jsonParser, function (req, res) {
     console.log("session destroyed", req.session.username);
     req.session.destroy();
+    res.redirect(303, "/registration");
 });
 // сверка пароля и логина
 app.post("/api/login", jsonParser, function (req, res) {
