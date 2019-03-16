@@ -1,5 +1,4 @@
 import React from 'react'
-import {  } from 'react-router'
 import { Router ,Link } from 'react-router-dom'
 import createBorwserHistory from 'history/createBrowserHistory'
 
@@ -11,7 +10,7 @@ function SideMenuBody (props) {
             <div class={props.class} id="side-menu"> 
                 <div class="row">
                     <div class="container-fluid text-center">
-                        <img src="https://i.mycdn.me/image?id=593157762248&plc=WEB&tkn=*PwnZ2-HQ--pYdGMUh_tR5rlt1lM&fn=sqr_288" class="rounded-circle block-100 my-4 mx-auto d-block" alt="User"></img>
+                        <img src="http://makisushi.kz/image/cache/data/4sezona-500x500.jpg" class="rounded-circle block-100 my-4 mx-auto d-block" alt="User"></img>
                         <Router  history={history}>
                             <div class="nav nav-pills flex-column" id="">
                             <Link class="nav-link dark-hover" to='/create'>Create New Article</Link>
