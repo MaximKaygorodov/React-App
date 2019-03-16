@@ -8,7 +8,7 @@ function PublishedArticlesList() {
     const articleElement = artilcesArr.map(article => 
         <div class="card mb-5 mx-3" key={article.id}><Article article = {article}/></div>)
         return (  
-               <div>
+               <div class='container pt-3 bg-light'>
                     {articleElement}
                </div>
         )
