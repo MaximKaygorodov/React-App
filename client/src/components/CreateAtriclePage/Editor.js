@@ -34,8 +34,10 @@ function saveUnpublished() {
         headers: {'Content-Type': 'application/json'},
         body:  JSON.stringify( saveArticleToServer )
                 };
-fetch('api/contents/', myInit).then(function(content){
-    console.log(content);
+fetch('api/contents/', myInit).then(function(res){
+    if (res.status === 401){
+        console.log("error, you have no right to do it");
+    }
     reset();
     });
 }

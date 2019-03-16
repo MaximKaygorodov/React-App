@@ -2,9 +2,23 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var fs = require("fs");
 
+var cookieParser = require("cookie-parser");
+var session = require("express-session");
+
  
 var app = express();
 var jsonParser = bodyParser.json();
+
+app.use(cookieParser());
+var cookies = { path: '/', httpOnly: true, secure: false, maxAge: null };
+
+app.use(session({
+    secret: "supersecret",
+    key: "sid",
+    cookie: cookies,
+    store: new session.MemoryStore
+}));
+
 app.set("view engine", "hbs");
  
 app.use(express.static(__dirname + "/static/"));
@@ -21,6 +35,88 @@ app.get("/api/contents", function(req, res){
     var statya = fs.readFileSync("./client/src/contents.json", "utf8");
     var contents = JSON.parse(statya);
     res.send(contents);
+});
+
+function requiresLogin(req, res, next) {
+    if (req.session && req.session.username) {
+      return next();
+    } else {
+      var err = new Error('You must be logged in to view this page.');
+      err.status = 401;
+      return next(err);
+    }
+}
+// выход из системы
+app.post("/api/logout", jsonParser, function (req, res) {
+    console.log("session destroyed", req.session.username);
+    req.session.destroy();
+});
+// сверка пароля и логина
+app.post("/api/login", jsonParser, function (req, res) {
+
+    if(!req.body) return res.sendStatus(400); 
+
+    var userLogin = req.body.login;
+    var userPassword = req.body.password;
+    var user = {login: userLogin, password: userPassword};
+     
+    var data = fs.readFileSync("./client/src/logins.json", "utf8");
+    var users = JSON.parse(data);
+
+    var foundUser;
+    for(var i=0; i<users.length; i++){
+        var u = users[i];
+        if ((u.login == userLogin) && u.password == userPassword){
+            foundUser = u.login;
+            break;
+        }
+    }
+    if (foundUser !== undefined) {
+        req.session.username = foundUser;
+        res.status(303).send();
+        console.log("Login successful: ", foundUser);
+    }
+    else{
+        console.log("Login failed: ", req.body.login);
+        res.status(404).send();
+    }
+});
+// регистрация пользователя
+app.post("/api/createUsers", jsonParser, function (req, res) {
+     
+    if(!req.body) return res.sendStatus(400);
+     
+    var userLogin = req.body.login;
+    var userPassword = req.body.password;
+    var user = {login: userLogin, password: userPassword};
+     
+    var data = fs.readFileSync("./client/src/logins.json", "utf8");
+    var users = JSON.parse(data);
+    var foundUser;
+    for(var i=0; i<users.length; i++){
+        var u = users[i];
+        if (u.login == userLogin){
+            foundUser = u.login;
+            break;
+        }
+    }
+    if (foundUser !== undefined) {
+        res.status(404).send();
+        console.log("User with this login already exists: ", foundUser);
+    }
+    else{
+        console.log("User was successfully registered: ", userLogin);
+        // находим максимальный id
+        var id = Math.max.apply(Math,users.map(function(o){return o.id;}))
+        // увеличиваем его на единицу
+        user.id = id+1;
+        // добавляем пользователя в массив
+        users.push(user);
+        var data = JSON.stringify(users);
+        // перезаписываем файл с новыми данными
+        fs.writeFileSync("./client/src/logins.json", data);
+        res.send(user);
+    }
 });
 // получение одной статьи по id
 app.get("/api/contents/:id", function(req, res){
@@ -45,7 +141,7 @@ app.get("/api/contents/:id", function(req, res){
     }
 });
 // получение отправленных данных
-app.post("/api/contents", jsonParser, function (req, res) {
+app.post("/api/contents", requiresLogin, jsonParser, function (req, res) {
      
     if(!req.body) return res.sendStatus(400);
      
