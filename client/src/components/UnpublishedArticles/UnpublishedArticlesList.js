@@ -8,7 +8,11 @@ function UnpublishedArticlesList () {
         <div class="container-fluid mx-0 px-0 mb-3" key={article.id}><UnpublishedArticle article = {article}/></div>)
         return (
             <div>
+                <h1>Unpublished Articles</h1>
+                <hr/>
+            <div>
                 {articleElement} 
+            </div>
             </div>
         )
     }

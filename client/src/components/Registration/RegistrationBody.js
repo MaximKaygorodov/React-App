@@ -77,8 +77,10 @@ function RegistrationBody() {
                 <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
                 <label class="form-check-label" for="exampleCheck1">Remember me</label>
             </div>
-            <button type="submit" onClick={login} class="btn btn-primary">Log in</button>
-            <button onClick={login} onClick={CreateUser} class="btn btn-primary">Create your account</button>
+            <div class='row'>
+                <button type="submit" onClick={login} class="btn btn-primary mx-1">Log in</button>
+                <button onClick={login} onClick={CreateUser} class="btn btn-light">Create your account</button>
+            </div>
             </form> 
         </div>
     )
